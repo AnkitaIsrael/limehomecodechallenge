@@ -2,71 +2,76 @@
 {% load staticfiles %}
 <html lang="en">
 <head>
-	<title>Table V01</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="{% static "images/icons/favicon.ico" %}"/>
+  <title>Table V01</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}"/>
+  <link rel="icon" type="image/png" href="{% static "images/icons/favicon.ico" %}"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static "fonts/font-awesome-4.7.0/css/font-awesome.min.css" %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static "vendor/animate/animate.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "fonts/font-awesome-4.7.0/css/font-awesome.min.css" %}"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static "vendor/select2/select2.min.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "vendor/animate/animate.css" %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static "vendor/perfect-scrollbar/perfect-scrollbar.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "vendor/select2/select2.min.css" %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static "css/util.css" %}">
-	<link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "vendor/perfect-scrollbar/perfect-scrollbar.css" %}">
+<!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static "css/util.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
 <!--===============================================================================================-->
 </head>
 <body>
-	<div class="limiter">
-		<div class="container-table100">
-			<div class="wrap-table100">
-				<div class="table100">
-					<table>
-						<thead>
-							<tr class="table100-head">
-								<th class="column1">Name</th>
-								<th class="column2">Address</th>
-								<th class="column3">City</th>
-								<th class="column4">Pets Allowed</th>
-								<th class="column5">Price per Night</th>
-								<th class="column6">Average Rating</th>
-                                <th class="column6">Wifi Availability</th>
-                                <th class="column6">Parking Availability</th>
-							</tr>
-						</thead>
-						{% for hotels in allHotels %}
-                        <tr>
-                            <td>{{ hotels.property_name }} </td>
-                            <td>{{ hotels.address }} </td>
-                            <td>{{ hotels.city }} </td>
-                            <td>{{ hotels.petsAllowed }} </td>
-                            <td>{{ hotels.pricePerNight }} </td>
-                            <td>{{ hotels.averageRating }} </td>
-                            <td>{{ hotels.wifiAvailability}} </td>
-                            <td>{{ hotels.parkingAvailability}} </td>
-                        </tr>
-                        {% endfor %}
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="limiter">
+     <div class="container-table100">
+        <div class="wrap-table100">
+           <div class="table100">
+              <table>
+                 <thead>
+                    <tr class="table100-head">
+                       <th class="column1">Name</th>
+                       <th class="column2">Address</th>
+                       <th class="column3">Pets Allowed</th>
+                       <th class="column4">Price per Night</th>
+                       <th class="column5">Average Rating</th>
+                        <th class="column6">Wifi Availability</th>
+                        <th class="column7">Parking Availability</th>
+                        <th class="column8">Latitude Coordinates</th>
+                        <th class="column9">Longitude Coordinates</th>
 
-<!--===============================================================================================-->	
-	<script src="{% static "vendor/jquery/jquery-3.2.1.min.js" %}"></script>
+                    </tr>
+                 </thead>
+                 {% for hotels in allHotels %}
+                       <tr>
+                           <td>{{ hotels.property_name }} </td>
+                           <td>{{ hotels.address }} </td>
+                           <td>{{ hotels.petsAllowed }} </td>
+                           <td>{{ hotels.pricePerNight }} </td>
+                           <td>{{ hotels.averageRating }} </td>
+                           <td>{{ hotels.wifiAvailability }} </td>
+                           <td>{{ hotels.parkingAvailability }} </td>
+                           <td>{{ hotels.latitudeCoordinates }} </td>
+                           <td>{{ hotels.longitudeCoordinates }} </td>
+
+                       </tr>
+                       {% endfor %}
+              </table>
+           </div>
+        </div>
+     </div>
+  </div>
+
 <!--===============================================================================================-->
-	<script src="{% static "vendor/bootstrap/js/popper.js" %}"></script>
-	<script src="{% static "vendor/bootstrap/js/bootstrap.min.js" %}"></script>
+  <script src="{% static "vendor/jquery/jquery-3.2.1.min.js" %}"></script>
 <!--===============================================================================================-->
-	<script src="{% static "vendor/select2/select2.min.js" %}"></script>
+  <script src="{% static "vendor/bootstrap/js/popper.js" %}"></script>
+  <script src="{% static "vendor/bootstrap/js/bootstrap.min.js" %}"></script>
 <!--===============================================================================================-->
-	<script src="{% static "js/main.js" %}"></script>
+  <script src="{% static "vendor/select2/select2.min.js" %}"></script>
+<!--===============================================================================================-->
+  <script src="{% static "js/main.js" %}"></script>
 
 </body>
 </html>
+
