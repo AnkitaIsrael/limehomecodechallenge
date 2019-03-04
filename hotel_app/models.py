@@ -12,7 +12,11 @@ class Hotel(models.Model):
    latitudeCoordinates = models.FloatField(verbose_name='Latitude Coordinates', default=0.0)
    longitudeCoordinates = models.FloatField(verbose_name='Longitude Coordinates', default=0.0)
 
+   class Meta:
+   		unique_together=('property_name','address','latitudeCoordinates','longitudeCoordinates')
 
 
 
 
+   def __str__(self):
+         return self.property_name

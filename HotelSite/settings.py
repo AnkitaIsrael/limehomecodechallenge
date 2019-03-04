@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['192.168.1.83', 'localhost', '127.0.0.1']
 
+SEED_GENERATION_SECRET = "SEED_GENERATION_SECRET"
 
 # Application definition
 
