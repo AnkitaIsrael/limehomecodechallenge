@@ -12,6 +12,16 @@ Time given: 10 days
 ## Functionality
 
 ## Installing
+### Install Python
+https://www.python.org/downloads/
+
+### Install pip
+https://pip.pypa.io/en/stable/installing/
+
+### Install geocoder
+```
+pip install geocoder
+```
 
 ### Clone the project
 
@@ -20,3 +30,7 @@ Time given: 10 days
 ### Running
 #### A developement server
 Just run this command:
+```
+python manage.py runserver
+```
+
