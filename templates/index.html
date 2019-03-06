@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Hotel List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,700'>
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
+</head>
+<body>
+<h1> Find comfy rooms around you!</h1>
+<h3> Click on the properties to see them on the map.</h3>
+<ul id="hotel-list">
+{% for hotels in allHotels %}
+        <li id="{{ hotels.id }}" class="hotel" data-title= "{{ hotels.property_name }}" data-address= "{{ hotels.address }}"
+            data-petsAllowed= "{{ hotels.petsAllowed }}" data-price= "{{ hotels.pricePerNight }}" data-rating= "{{ hotels.averageRating }}"
+            data-wifi= "{{ hotels.wifiAvailability }}" data-parking= "{{ hotels.parkingAvailability }}" data-lat="{{ hotels.latitudeCoordinates }}"
+            data-lng="{{ hotels.longitudeCoordinates }}"><b><font color="#006400"> {{ hotels.property_name }} </font></b><br> {{ hotels.address }} <br> Pets Allowed: {{ hotels.petsAllowed }}
+            <br> Average Rating: {{ hotels.averageRating }} <br> Wifi Available: {{ hotels.wifiAvailability }} <br> Parking Available: {{ hotels.parkingAvailability }}
+            <span class="price">{{ hotels.pricePerNight }}
+            <span class="currency">EURO/Price per Night</span></span></li>
+{% endfor %}
+    </ul>
+<br>
+<br>
+<div id="map" align="left"></div>
+
+  <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD7TXR4vs5WbtzWXCTe7oMPKa12WtXF10Q'></script>
+  <script src="{% static "js/index.js" %}"></script>
+
+
+
+
+</body>
+
+</html>

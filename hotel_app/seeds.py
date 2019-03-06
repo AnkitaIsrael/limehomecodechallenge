@@ -122,7 +122,7 @@ def runSeeds(request):
 
     seedData = getHotelSeeds()
     for seedObject in seedData:
-        hotelInstance = Hotel.objects.create(
+        hotelInstance, created = Hotel.objects.get_or_create(
             property_name=seedObject["property_name"],
             address=seedObject["address"],
             petsAllowed=seedObject["petsAllowed"],
@@ -133,7 +133,8 @@ def runSeeds(request):
             latitudeCoordinates = seedObject["latitudeCoordinates"],
             longitudeCoordinates = seedObject["longitudeCoordinates"]
         )
-        hotelInstance.save()
+        if not created:
+            hotelInstance.save()
 
     return HttpResponse("[200] Seed Generation Success!")
 
