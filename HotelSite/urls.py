@@ -26,5 +26,10 @@ urlpatterns = [
     #path('accounts/', include('django.contrib.auth.urls')),
     url(r'^customer/', include(('customer_app.urls', 'customer_app'), namespace='customerApp')),
     url(r'^hotel/', include(('hotel_app.urls', 'hotel_app'), namespace='hotelApp')),
+    url(r'^booking/', include(('booking_app.urls', 'booking_app'), namespace='bookingApp')),
+    path('accounts/', include('accounts.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('', TemplateView.as_view(template_name='index.html'), name='index'),
+    #path('', TemplateView.as_view(template_name='booking.html'), name='booking'),
 
 ]

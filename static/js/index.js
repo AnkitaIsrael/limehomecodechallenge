@@ -46,19 +46,6 @@ customMarker.prototype.draw = function() {
 };
 
 function initialize() {
-	// g = geocoder.ip('me')
-	// var mapCanvas = document.getElementById('map');
-	// navigator.geolocation.getCurrentPosition(showPosition);
-	// var mapCenter = new google.maps.LatLng(position.coords.latitude, );
-	// var mapOptions = {
-	// 	center: mapCenter,
-	// 	zoom: 17,
-	// 	mapTypeId: google.maps.MapTypeId.ROADMAP,
-	//
-	// 	scrollwheel: false,
-	// 	disableDefaultUI: true,
-	// 	zoomControl: true,
-
 	var mapCanvas = document.getElementById('map');
 	var myLatlng1 = new google.maps.LatLng(53.65914, 0.072050);
 	if (navigator.geolocation) {

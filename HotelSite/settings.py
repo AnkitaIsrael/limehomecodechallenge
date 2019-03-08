@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'customer_app',
     'booking_app',
     'django_seed',
+    'accounts.apps.AccountsConfig'
 ]
 
 
@@ -130,3 +131,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
 LOGIN_REDIRECT_URL = '/'
+
+LOGOUT_REDIRECT_URL = '/'
+

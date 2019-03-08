@@ -1,14 +1,18 @@
 import random
+from django.http import HttpResponseRedirect
 import sys
 import math
 import geocoder
-from django.shortcuts import render
+from django.template import RequestContext
+from django.shortcuts import render, render_to_response
 from hotel_app.models import Hotel
+from django.template.context_processors import csrf
 
+
+# Find the ip address of the user to get Latitude and longitude
+g = geocoder.ip('me')
 
 def update_hotel_coordinates():
-    #Find the ip address of the user to get Latitude and longitude
-    g = geocoder.ip('me')
 
     # Choose your the radius and convert to degrees
     radius = 17000
@@ -35,10 +39,25 @@ def update_hotel_coordinates():
         hotel.save()
     return True
 
+def update_hotel_city():
+    hotels = Hotel.objects.all()
+    for hotel in hotels:
+        hotel.property_city = g.city
+        hotel.save()
+
 # Gets all properties from Hotels and references the main html page that shows list of hotels
 def index(request):
     update_hotel_coordinates()
+    update_hotel_city()
     allHotels = Hotel.objects.all()
     context = {'allHotels': allHotels}
     return render(request, "index.html", context)
+
+
+# def bookingDetails(request):
+#     if request.method == 'POST':
+#         return render(request, "booking.html")
+
+
+
 

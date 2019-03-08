@@ -9,7 +9,8 @@ class Customer(models.Model):
    phone = models.IntegerField(verbose_name='Phone', default=0)
    address = models.CharField(max_length=256, verbose_name='Home Address', default='')
    country = models.CharField(max_length=256, verbose_name='Country',default='')
-   user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, related_name='customer') # only use username as email and password field
+   # only use username as email and password field
+   user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, related_name='customer')
 
 
    def __unicode__(self):

@@ -7,3 +7,5 @@ class Booking(models.Model):
     customer= models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='customer')
     hotel= models.ForeignKey(Hotel, on_delete=models.CASCADE, related_name='hotel')
 
+    class Meta:
+        unique_together = ('customer', 'hotel')
