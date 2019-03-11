@@ -37,12 +37,13 @@ python3 manage.py runserver
 ```
 
 ### Relevant URLS
+
 - Admin: 127.0.0.1:8000/admin 
   - Login with:
     - Username: ankitaisrael
     - Password: ankita007
 
-- Homepage: 127.0.0.1:8000/
+- Homepage(when asked for location, please click yes): 127.0.0.1:8000/
 
 - Login: 127.0.0.1:8000/accounts/login/
 
