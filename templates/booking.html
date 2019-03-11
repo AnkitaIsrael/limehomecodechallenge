@@ -25,6 +25,7 @@
                     <br> <br>
                 <h3>Enjoy Your Stay!</h3>
             </p>
+                <a class = "homeLink" href="{% url 'index' %}">Home</a><br>
             </div>
         </body>
     {% else %}
@@ -32,5 +33,3 @@
         <a href="{% url 'login' %}">login</a><br>
         <a href="{% url 'signup' %}">signup</a>    {% endif %}
 {% endblock %}
-
-
