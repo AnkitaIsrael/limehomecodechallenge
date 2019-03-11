@@ -33,7 +33,7 @@ pip3 install Django djangorestframework geocoder django_seeds
 #### A developement server
 Just run this command:
 ```
-python manage.py runserver
+python3 manage.py runserver
 ```
 
 ### Relevant URLS
