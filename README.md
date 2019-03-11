@@ -18,14 +18,19 @@ https://www.python.org/downloads/
 ### Install pip
 https://pip.pypa.io/en/stable/installing/
 
+### Install django-rest-framework
+```
+pip install djangorestframework
+```
 ### Install geocoder
 ```
 pip install geocoder
 ```
 
 ### Clone the project
-
-### Apply migrations
+```
+git clone https://github.com/AnkitaIsrael/limehomecodechallenge.git
+```
 
 ### Running
 #### A developement server
@@ -34,3 +39,13 @@ Just run this command:
 python manage.py runserver
 ```
 
+###Relevant URLS:
+- Admin: 127.0.0.1:8000/admin
+Username: ankitaisrael
+Password: ankita007
+
+- Homepage: 127.0.0.1:8000/
+
+- Login: 127.0.0.1:8000/accounts/login/
+
+- Signup: 127.0.0.1:8000/accounts/signup/
