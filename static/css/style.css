@@ -52,7 +52,7 @@ a.mybtn:hover, a.mybtn:active {
 }
 
 
-a.logoutLink:link, a.logoutLink:visited{
+a.logoutLink:link, a.logoutLink:visited, a.homeLink:link, a.homeLink:visited {
   background-color: #000000;
   color: white;
   padding: 14px 25px;
@@ -61,7 +61,7 @@ a.logoutLink:link, a.logoutLink:visited{
   display: inline-block;
 }
 
-a.logoutLink:hover, a.logoutLink:active {
+a.homeLink:hover, a.homeLink:active, a.logoutLink:hover, a.logoutLink:active {
   background-color: #00840b;
 }
 
