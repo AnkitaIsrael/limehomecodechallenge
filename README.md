@@ -11,7 +11,7 @@ Time given: 10 days
 
 ### Clone the project
 ```
-git clone https://github.com/AnkitaIsrael/limehomecodechallenge.git
+git clone https://github.com/AnkitaIsrael/propertybooking.git
 ```
  
 ## Functionality
