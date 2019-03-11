@@ -3,7 +3,18 @@ from django.contrib.auth.models import User
 from hotel_app.models import Hotel
 import datetime
 
-# Model for bookings that gets both the foreign keys from Customer and Hotel and has start and end dates for booking
+"""
+
+Model for bookings that gets both the foreign keys from Customer and Hotel and has start and end dates for booking.
+
+:user: Foreign key referencing Django's User Model
+:hotel: Foreign key referencing Hotel Model
+:dateFrom: Booking start date 
+:dateTo: Booking end date
+
+"""
+
+
 class Booking(models.Model):
     user= models.ForeignKey(User, on_delete=models.CASCADE, related_name='user', default= " ")
     hotel= models.ForeignKey(Hotel, on_delete=models.CASCADE, related_name='hotel',  default= " ")

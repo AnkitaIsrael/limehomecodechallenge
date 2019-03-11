@@ -3,16 +3,11 @@
     <head>
       <meta charset="UTF-8">
       <title>Select Dates</title>
-                    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/jquery.datepick.css">
-<script type="text/javascript" src="js/jquery.plugin.js"></script>
-<script type="text/javascript" src="js/jquery.datepick.js"></script>
-            <script src="{% static "js/index.js" %}"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+        <script src="{% static "js/index.js" %}"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,700'>
         <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
-
-
     </head>
 
     {% if user.is_authenticated %}
@@ -21,28 +16,30 @@
             <h2> Explore Cozy Homes </h2>
             <h4> Select Dates</h4>
         </header>
-        <br>
         <a class = "logoutLink" href="{% url 'logout' %}">logout</a>
         <br>
         <br>
         <br>
-        <h3>You're One Step Away from Booking your Stay at {{ hotel.property_name }}</h3>
+        <h3>You're One Step Away from Booking your Stay at {{ hotel.property_name }}!</h3>
         <br>
+        <div class="dateForm">
         Please Select your Dates! <br>
         <form action="" method="post">
             <label for="start">Start date:</label>
-            <input type="date" id="start" name="booking-start" required>
+            <input type="date" id="start" name="booking-start" required/>
+
             <input type="hidden" value="{{ hotel.id }}" name="id">
+
             <label for="end">End date:</label>
             <input type="date" id="end" name="booking-end" required>
-            <input type = "submit" >
+            <input type = "submit">
             {% csrf_token %}
         </form>
-
-    </body>
-        {% else %}
+        </div>
+        </body>
+    {% else %}
             <p>You are not logged in</p>
-            <a href="{% url 'login' %}">login</a>
-        {% endif %}
-
-    {% endblock %}
+            <a href="{% url 'login' %}">login</a><br>
+            <a href="{% url 'signup' %}">signup</a>
+    {% endif %}
+{% endblock %}

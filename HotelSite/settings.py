@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'hotel_app',
-    'customer_app',
     'booking_app',
     'django_seed',
     'accounts.apps.AccountsConfig',

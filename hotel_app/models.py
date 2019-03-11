@@ -1,6 +1,22 @@
 from django.db import models
 
-#Model for Hotel that contains all specifications of the property
+"""
+
+Model for Hotel that contains all specifications of the property
+
+:property_name: Name of the property
+:property_city: Name of the property's city
+:address: Address of the property
+:petsAllowed: If the property allows pets
+:pricePerNight: The price of the stay at the property per night
+:averageRating: Average rating of the property
+:wifiAvailability: If the property provides wifi
+:parkingAvailability: If the property provides parking
+:latitudeCoordinates: The latitude coordinates of the property
+:longitudeCoordinates: The longitude coordinates of the property
+
+"""
+
 class Hotel(models.Model):
    property_name = models.CharField(max_length=250, verbose_name='Name of Hotel')
    property_city = models.CharField(max_length=250, verbose_name = 'City of Hotel', default="")
@@ -15,9 +31,6 @@ class Hotel(models.Model):
 
    class Meta:
    		unique_together=('property_name','address','latitudeCoordinates','longitudeCoordinates')
-
-
-
 
    def __str__(self):
          return self.property_name

@@ -1,17 +1,10 @@
 import random
-
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
-import sys
 import math
 import geocoder
-from django.template import RequestContext
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 from hotel_app.models import Hotel
 from booking_app.models import Booking
-
-from django.template.context_processors import csrf
-
 
 # Find the ip address of the user to get Latitude and longitude
 g = geocoder.ip('me')
@@ -43,6 +36,7 @@ def update_hotel_coordinates():
         hotel.save()
     return True
 
+# Update the city of the hotel based on the ip
 def update_hotel_city():
     hotels = Hotel.objects.all()
     for hotel in hotels:
@@ -57,7 +51,7 @@ def index(request):
     context = {'allHotels': allHotels}
     return render(request, "index.html", context)
 
-
+#Get all details of the booking for the booking details page
 def bookingDetails(request, id):
     hotelDetail = Hotel.objects.get(id=id)
     context = {
@@ -66,6 +60,7 @@ def bookingDetails(request, id):
 
     return render(request, "booking.html", context)
 
+#Add the booking by getting the user and hotel id along with start and end dates
 def addBooking(request, id):
     if request.method=='POST':
         startDate = request.POST.get("booking-start")

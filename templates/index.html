@@ -9,16 +9,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,700'>
     <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <body>
 <header>
     <h2> Explore Cozy Homes </h2>
 </header>
-
-<p class="helloUser">Hello {{ user.username }}!</p>
 <a class = "logoutLink" href="{% url 'logout' %}">logout</a>
-
-<h3> <center>Click on the Properties to see them on the Map.</center></h3>
-<ul id="hotel-list" style="width: 600px; height: 550px; overflow-y:scroll">
+Hello {{ user.username }}!
+<h3>Click on the Properties to See them on the Map.</h3>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-4">
+<ul id="hotel-list">
 {% for hotels in allHotels %}
     <li id="{{ hotels.id }}" class="hotel"
             data-title= "{{ hotels.property_name }}"
@@ -38,23 +41,31 @@
             Pets Allowed: {{ hotels.petsAllowed|yesno:"yes,no"}}<br>
             Average Rating: {{ hotels.averageRating }}/5 <br>
             Wifi Available: {{ hotels.wifiAvailability|yesno:"yes,no"}} <br>
-            Parking Available: {{ hotels.parkingAvailability|yesno:"yes,no"}}
-            <span class="price">{{ hotels.pricePerNight }}
-            <span class="currency">EURO/Price per Night</span></span></li>
+            Parking Available: {{ hotels.parkingAvailability|yesno:"yes,no"}}<br>
+            <span class="price">{{ hotels.pricePerNight }}<br>
+            <span class="currency">EURO/Price per Night</span></span><br></li><br>
 
-     <a href="/book/{{ hotels.id }}" class="mybtn"> Select Dates </a>
+     <a href="/book/{{ hotels.id }}" class="mybtn"> Select Dates </a><br>
     <hr>
 {% endfor %}
     </ul>
+</div>
+<div class="col-sm-8">
 <br>
 <br>
 <br>
-<div id="map" align="left"></div>
+<div id="map"></div>
   <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD7TXR4vs5WbtzWXCTe7oMPKa12WtXF10Q'></script>
   <script src="{% static "js/index.js" %}"></script>
+</div>
+</div>
+</div>
+
 </body>
 {% else %}
   <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a>
+    <a href="{% url 'login' %}">login</a><br>
+    <a href="{% url 'signup' %}">signup</a>
+
 {% endif %}
 {% endblock %}
