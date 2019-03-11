@@ -16,17 +16,20 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.urls import path, include
+import bookingapi
 from . import views
 from django.views.generic.base import TemplateView
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('bookingapi.urls')),
     path('', views.index),
-    #path('accounts/', include('django.contrib.auth.urls')),
     url(r'^customer/', include(('customer_app.urls', 'customer_app'), namespace='customerApp')),
     url(r'^hotel/', include(('hotel_app.urls', 'hotel_app'), namespace='hotelApp')),
-    url(r'^booking/', include(('booking_app.urls', 'booking_app'), namespace='bookingApp')),
+    url(r'^booking/(?P<id>\d+)/$', views.bookingDetails, name="bookingDetails"),
+    url(r'^book/(?P<id>\d+)/$', views.addBooking, name="addBooking"),
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', TemplateView.as_view(template_name='index.html'), name='index'),

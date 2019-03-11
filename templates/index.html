@@ -3,51 +3,46 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 {% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="{% url 'logout' %}">logout</a></p>
-  <p><a href="{% url 'password_reset' %}">reset password</a></p>
-    <head>
+
   <meta charset="UTF-8">
   <title>Hotel List</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,700'>
     <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
-</head>
 <body>
 <header>
     <h2> Explore Cozy Homes </h2>
 </header>
 
+<p class="helloUser">Hello {{ user.username }}!</p>
+<a class = "logoutLink" href="{% url 'logout' %}">logout</a>
+
 <h3> <center>Click on the Properties to see them on the Map.</center></h3>
 <ul id="hotel-list" style="width: 600px; height: 550px; overflow-y:scroll">
 {% for hotels in allHotels %}
-
     <li id="{{ hotels.id }}" class="hotel"
             data-title= "{{ hotels.property_name }}"
             data-address= "{{ hotels.address }}"
-            data-petsAllowed= "{{ hotels.petsAllowed }}"
             data-price= "{{ hotels.pricePerNight }}"
             data-rating= "{{ hotels.averageRating }}"
-            data-wifi= "{{ hotels.wifiAvailability }}"
-            data-parking= "{{ hotels.parkingAvailability }}"
+            data-petsAllowed= "{{ hotels.petsAllowed}}"
+            data-wifi= "{{ hotels.wifiAvailability}}"
+            data-parking= "{{ hotels.parkingAvailability}}"
             data-lat="{{ hotels.latitudeCoordinates }}"
             data-lng="{{ hotels.longitudeCoordinates }}">
-            <b><font color="#006400"> {{ hotels.property_name }} </font></b><br>
+            <p class ="propertyname">
+                {{ hotels.property_name }}
+            </p> <br>
             {{ hotels.address }} <br>
             {{ hotels.property_city }} <br>
-            Pets Allowed: {{ hotels.petsAllowed }}
-            <br> Average Rating: {{ hotels.averageRating }} <br>
-            Wifi Available: {{ hotels.wifiAvailability }} <br>
-            Parking Available: {{ hotels.parkingAvailability }}
+            Pets Allowed: {{ hotels.petsAllowed|yesno:"yes,no"}}<br>
+            Average Rating: {{ hotels.averageRating }}/5 <br>
+            Wifi Available: {{ hotels.wifiAvailability|yesno:"yes,no"}} <br>
+            Parking Available: {{ hotels.parkingAvailability|yesno:"yes,no"}}
             <span class="price">{{ hotels.pricePerNight }}
             <span class="currency">EURO/Price per Night</span></span></li>
 
-    <form action="" method="post">
-        <button type="submit" name = "Reserve" style="float: right;"> Reserve </button>{% csrf_token %}
-    </form>
-
-
-
+     <a href="/book/{{ hotels.id }}" class="mybtn"> Select Dates </a>
     <hr>
 {% endfor %}
     </ul>
@@ -63,7 +58,3 @@
   <a href="{% url 'login' %}">login</a>
 {% endif %}
 {% endblock %}
-<!DOCTYPE html>
-<html lang="en" >
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</html>

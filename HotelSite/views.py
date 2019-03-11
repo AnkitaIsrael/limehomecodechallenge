@@ -1,4 +1,6 @@
 import random
+
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 import sys
 import math
@@ -6,6 +8,8 @@ import geocoder
 from django.template import RequestContext
 from django.shortcuts import render, render_to_response
 from hotel_app.models import Hotel
+from booking_app.models import Booking
+
 from django.template.context_processors import csrf
 
 
@@ -54,9 +58,29 @@ def index(request):
     return render(request, "index.html", context)
 
 
-# def bookingDetails(request):
-#     if request.method == 'POST':
-#         return render(request, "booking.html")
+def bookingDetails(request, id):
+    hotelDetail = Hotel.objects.get(id=id)
+    context = {
+        'hotelDetail' : hotelDetail
+    }
+
+    return render(request, "booking.html", context)
+
+def addBooking(request, id):
+    if request.method=='POST':
+        startDate = request.POST.get("booking-start")
+        endDate = request.POST.get("booking-end")
+        hotelDetail = Hotel.objects.get(id=id)
+        current_user= User.objects.get(id=request.user.id)
+        new_booking = Booking(user=current_user, hotel=hotelDetail, dateFrom=startDate, dateTo=endDate)
+        new_booking.save()
+        return render(request, "booking.html", {'hotel':hotelDetail})
+
+    if request.method == 'GET':
+        hotelDetail = Hotel.objects.get(id=id)
+        return render(request, "selectDates.html", {'hotel':hotelDetail})
+
+
 
 
 

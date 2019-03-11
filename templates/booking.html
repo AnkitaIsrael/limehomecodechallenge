@@ -1,8 +1,5 @@
-{% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}Home{% endblock %}
 {% block content %}
-    Hi
     <head>
   <meta charset="UTF-8">
   <title>Hotel List</title>
@@ -10,9 +7,32 @@
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,700'>
     <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
 </head>
-<body>
-<header>
+
+
+    {% if user.is_authenticated %}
+            <header>
     <h2> Explore Cozy Homes </h2>
+    <h4> Booking Details</h4>
 </header>
 
+<body>
+<br>
+        <a class = "logoutLink" href="{% url 'logout' %}">logout</a><br>
+<br>
+Thanks for the Reservation! Here are our Property Details: <br>
+<p class="propertyname">{{ hotel.property_name }}</p>
+        Address: {{ hotel.address }}<br>
+        City: {{ hotel.property_city }}<br>
+        Price per Night(in EUROS): {{ hotel.pricePerNight }} <br>
+        Average Rating: {{ hotel.averageRating }}/5 <br>
+        <br> <br>
+    Enjoy Your Stay!
+    </body>
+
+{% else %}
+            <p>You are not logged in</p>
+            <a href="{% url 'login' %}">login</a>
+        {% endif %}
 {% endblock %}
+
+

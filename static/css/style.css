@@ -9,8 +9,8 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-body:hover {
-  font-family: 'Roboto', sans-serif;
+body {
+  font-family: 'BankGothic', sans-serif;
   font-size: 1.6rem;
   line-height: 1.5em;
   cursor: pointer;
@@ -28,6 +28,32 @@ header {
 h3{
   align:center;
 }
+
+
+a.mybtn:link, a.logoutLink:link, a.logoutLink:visited, a.mybtn:visited {
+  background-color: #000000;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a.mybtn:hover, a.mybtn:active {
+  background-color: rgba(122, 116, 113, 0.98);
+}
+
+p.propertyname {
+  font-size: 20px;
+  font-style: italic;
+  color: #00840b;
+}
+
+p.bookingDate{
+  align:center;
+}
+
+
 
 #hotel-list {
   	float: left;
@@ -113,7 +139,7 @@ h3{
   color: #fff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
   padding: 8px 10px 7px 10px;
-  background: #78c1a3;
+  background: #00840b;
   margin-top: -43px;
   margin-left: -20px;
   position: absolute;
@@ -126,7 +152,7 @@ h3{
   height: 0;
   border: 10px solid transparent;
   border-right-width: 20px;
-  border-right-color: #78c1a3;
+  border-right-color: #00840b;
   margin-top: -10px;
   margin-left: -10px;
   position: absolute;
@@ -137,10 +163,10 @@ h3{
   transition: border-right 0.2s;
 }
 .hotel-marker.js-active {
-  background: #607d8b;
+  background: #000000;
 }
 .hotel-marker.js-active::before {
-  border-right-color: #607d8b;
+  border-right-color: #000000;
 }
 .hotel-marker .currency {
   font-size: 0.5em;
